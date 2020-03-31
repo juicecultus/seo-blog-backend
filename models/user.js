@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true
     },
-    salt: Number,
+    salt: String,
     about: {
       type: String
     },
@@ -74,7 +74,7 @@ userSchema.methods = {
     return this.encryptPassword(plainText) === this.hashed_password;
   },
 
-  ecryptPassword: function(password) {
+  encryptPassword: function(password) {
     if (!password) return '';
     try {
       return crypto
